@@ -11,9 +11,34 @@ from unittest.mock import patch
 import preflight
 import smoke
 import admit_runtime
+import make_jobs
+import start_company
 
 
 class RunnerTests(unittest.TestCase):
+    def test_deadline_queue_excludes_duplicate_studies_and_gates_optional_block(self):
+        jobs = make_jobs.build_jobs()
+        self.assertEqual(len(jobs), 39)
+        self.assertEqual({row["grid"] for row in jobs}, {"case500"})
+        first_block = {row["job_id"] for row in jobs if row["block"] == "A"}
+        self.assertEqual(len(first_block), 23)
+        self.assertEqual(sum(row["updates"] for row in jobs), 48648)
+        for row in jobs:
+            self.assertFalse(row["execution_ready"])
+            if row["block"] == "C":
+                self.assertEqual(set(row["depends_on"]), first_block)
+                self.assertFalse(row["implementation_available"])
+
+    def test_duplicate_company_cases_are_rejected_before_runtime_or_disk_work(self):
+        for case in ("case118", "case30"):
+            with self.subTest(case=case):
+                with patch.object(sys, "argv", ["start_company.py", "--case", case,
+                                               "--work-dir", "unused", "--run-id", "unused"]):
+                    with patch("start_company.subprocess.check_output") as launch:
+                        with self.assertRaisesRegex(ValueError, "nonduplicate company scope"):
+                            start_company.main()
+                        launch.assert_not_called()
+
     def test_unchecked_cuda_cannot_admit_training(self):
         with patch("preflight.importlib.metadata.version",
                    side_effect=importlib.metadata.PackageNotFoundError):

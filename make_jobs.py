@@ -1,113 +1,61 @@
-"""Export the finite planned matrix; this is not a scientific training runner."""
+"""Export only the author's deadline-prioritized, nonduplicate company scope."""
 
 import json
 from pathlib import Path
 
 
+HERE = Path(__file__).resolve().parent
 SEEDS = (1, 11, 42, 123, 2026)
-GRIDS = ("case118", "case500", "case30")
 
 
 def build_jobs():
+    scope = json.loads((HERE / "CURRENT_SCOPE.json").read_bytes())
+    if scope["company_dispatch_cases"] != ["case500"]:
+        raise ValueError("Review any expansion before regenerating the deadline queue")
     jobs = []
 
-    def add(block, grid, method, seed, updates=1280, phase="formal", needs=(), **extra):
-        identifier = f"{block}.{grid}.{method}.s{seed}"
-        jobs.append({
-            "job_id": identifier, "block": block, "grid": grid, "method": method,
-            "seed": seed, "phase": phase, "updates": updates,
-            "depends_on": list(needs), "execution_ready": False,
-            "requires": ["release-cleared numerical bundle", "frozen input-role manifest",
-                         "authorized writable workspace", "admitted actual runtime"],
-            **extra,
-        })
+    def add(block, method, seed, phase, updates=1280, needs=(), implemented=True):
+        identifier = f"{block}.case500.{method}.s{seed}"
+        jobs.append({"job_id": identifier, "block": block, "grid": "case500",
+                     "method": method, "seed": seed, "phase": phase, "updates": updates,
+                     "depends_on": list(needs), "implementation_available": implemented,
+                     "execution_ready": False,
+                     "admission": "Actual company GPU/inputs/output ownership required; no automatic dispatch"})
         return identifier
 
-    for grid in GRIDS:
-        qualification = add("Q", grid, "full", 1, updates=8, phase="qualification")
-        tuning = [
-            add("A", grid, f"anchor_{coefficient}", 20261102, phase="tune",
-                needs=[qualification], anchor_coefficient=coefficient)
-            for coefficient in (.001, .01, .1)
-        ]
+    qualification = add("Q", "full", 1, "qualification", updates=8)
+    tuning = [add("A", method, 20261102, "tune", needs=[qualification])
+              for method in ("anchor_001", "anchor_01", "anchor_1")]
+    first_block = list(tuning)
+    for seed in SEEDS:
         for method in ("full", "physics_only", "physics_replay", "selected_anchor"):
-            for seed in SEEDS:
-                add("A", grid, method, seed,
-                    needs=[qualification, *tuning] if method == "selected_anchor" else [qualification])
-        for allowance in (0., .05, .2):
-            for seed in SEEDS:
-                add("B", grid, f"budget_{allowance}", seed,
-                    needs=[f"A.{grid}.full.s{seed}"], state_rmse_allowance=allowance,
-                    pbl_allowance=allowance, supervised_factor=2., supervised_offset=1e-4)
-        for method in ("linear_paired", "quadratic_fixed_source", "linear_fixed_source",
-                       "quadratic_paired_supervised_hinge"):
-            for seed in SEEDS:
-                add("C", grid, method, seed, needs=[f"A.{grid}.full.s{seed}"])
-    for method in ("quadratic_paired", "linear_paired", "quadratic_fixed_source",
-                   "linear_fixed_source", "quadratic_paired_supervised_hinge"):
-        for multiplier in (.1, 10.):
-            for seed in SEEDS:
-                add("C2", "case118", f"{method}_weight_{multiplier}", seed,
-                    quality_weight_multiplier=multiplier)
-    for grid in ("case118", "case500"):
+            first_block.append(add(
+                "A", method, seed, "formal",
+                needs=[qualification, *tuning] if method == "selected_anchor" else [qualification]))
+    for method in scope["company_second_block"]["methods"]:
         for seed in SEEDS:
-            first = add("D", grid, "round1_shared", seed, identity_split="new_five_round_split_required")
-            previous = first
-            for round_number in range(2, 6):
-                previous = add("D", grid, f"round{round_number}_continue", seed,
-                               needs=[previous], round=round_number)
-                add("D", grid, f"round{round_number}_restart_current", seed, round=round_number)
-                add("D", grid, f"round{round_number}_restart_cumulative", seed,
-                    updates=1280 * round_number, round=round_number)
-        for pretrained_seed in (7, 17, 29):
-            parent = add("E", grid, f"pretrain_{pretrained_seed}", pretrained_seed,
-                         updates=None, phase="pretrain", budget_status="UNFROZEN_DO_NOT_START")
-            for method in ("full", "physics_replay"):
-                for seed in SEEDS:
-                    add("E", grid, f"pretrained_{pretrained_seed}_{method}", seed, needs=[parent])
-    for grid in GRIDS:
-        for fraction in (.1, .25, 1.):
-            tuning = [
-                add("F", grid, f"labels_{fraction}_coefficient_{coefficient}", 20261102,
-                    phase="tune", label_fraction=fraction, supervised_coefficient=coefficient)
-                for coefficient in (.1, 1., 10.)
-            ]
-            for seed in SEEDS:
-                add("F", grid, f"labels_{fraction}_selected", seed,
-                    needs=tuning, label_fraction=fraction)
+            add("C", method, seed, "formal", needs=first_block, implemented=False)
     return jobs
 
 
 def main():
     jobs = build_jobs()
-    identifiers = {job["job_id"] for job in jobs}
-    if len(identifiers) != len(jobs):
-        raise ValueError("Duplicate planned job identities")
-    if any(set(job["depends_on"]) - identifiers for job in jobs):
-        raise ValueError("A planned dependency is absent")
-    summary = {
-        "status": "PLANNED_NOT_EXECUTION_READY",
-        "formal": sum(job["phase"] == "formal" for job in jobs),
-        "tuning": sum(job["phase"] == "tune" for job in jobs),
-        "qualification": sum(job["phase"] == "qualification" for job in jobs),
-        "pretraining_unfrozen": sum(job["phase"] == "pretrain" for job in jobs),
-        "formal_and_tuning_updates": sum(job["updates"] for job in jobs
-                                       if job["phase"] in ("formal", "tune")),
-        "qualification_updates": sum(job["updates"] for job in jobs if job["phase"] == "qualification"),
-    }
-    if summary != {
-        "status": "PLANNED_NOT_EXECUTION_READY", "formal": 450, "tuning": 36,
-        "qualification": 3, "pretraining_unfrozen": 6,
-        "formal_and_tuning_updates": 750080, "qualification_updates": 24,
-    }:
-        raise ValueError("The exported queue differs from the declared finite matrix")
-    destination = Path(__file__).with_name("jobs.jsonl")
-    if destination.exists():
-        raise FileExistsError("Preserve the existing schedule; generate a revision explicitly")
-    with destination.open("x", encoding="utf-8", newline="\n") as handle:
-        for job in jobs:
-            handle.write(json.dumps(job, sort_keys=True) + "\n")
-    print(json.dumps(summary, indent=2))
+    identifiers = {row["job_id"] for row in jobs}
+    if (len(identifiers) != 39 or sum(row["phase"] == "formal" for row in jobs) != 35
+            or sum(row["phase"] == "tune" for row in jobs) != 3
+            or any(set(row["depends_on"]) - identifiers for row in jobs)):
+        raise ValueError("The fixed deadline scope or dependency graph changed")
+    target = HERE / "jobs.jsonl"
+    if target.exists() and len(target.read_text(encoding="utf-8").splitlines()) == 495:
+        historical = HERE / "jobs_full_draft.jsonl"
+        if historical.exists():
+            raise FileExistsError("Preserve both historical proposals; inspect rather than overwrite")
+        target.rename(historical)
+    target.write_text("".join(json.dumps(row, sort_keys=True) + "\n" for row in jobs), encoding="utf-8")
+    print(json.dumps({"company_formal_maximum": 35, "company_tuning": 3,
+                      "company_qualification_updates": 8,
+                      "existing_CPU_formal": 35, "existing_CPU_tuning": 3,
+                      "automatic_dispatch": False}))
 
 
 if __name__ == "__main__":

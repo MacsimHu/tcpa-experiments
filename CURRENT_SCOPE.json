@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "decision_date": "2026-11-02",
+  "reason": "Author narrowed the PESGM deadline scope to necessary, nonduplicate evidence.",
+  "supersedes": "The expansive 450-formal/36-tuning proposal is historical, not an execution order.",
+  "automatic_extensions": false,
+  "existing_CPU_work_do_not_dispatch_on_company": {
+    "case118_matched_baselines": {
+      "formal": 20,
+      "tuning": 3,
+      "authority_sha256": "2e2ddd8b15a9ae27d8bd8023335732b3510a8901dac139714cda1dedad737ab3",
+      "last_checked_UTC": "2026-11-02T14:39:56+00:00",
+      "tuning_returns": 1,
+      "formal_returns": 0,
+      "second_tuning_last_logged_update": 640
+    },
+    "case118_trained_budgets": {
+      "additional_formal": 15,
+      "allowances": [0.0, 0.05, 0.2],
+      "reuse": "Same CPU study's five Full returns at allowance 0.10",
+      "status": "Existing frozen queue after its parent block and readout; not company work."
+    }
+  },
+  "company_dispatch_cases": ["case500"],
+  "company_first_block": {
+    "id": "A",
+    "formal": 20,
+    "tuning": 3,
+    "actual_backend_qualification_updates": 8,
+    "methods": ["full", "physics_only", "physics_replay", "selected_anchor"],
+    "updates_each": 1280,
+    "qualification_and_training_not_yet_observed": true
+  },
+  "company_second_block": {
+    "id": "C",
+    "case": "case500",
+    "additional_formal": 15,
+    "methods": ["linear_paired", "quadratic_fixed_source", "quadratic_paired_supervised_hinge"],
+    "reuse": "The first company's block's five matching Full returns",
+    "purpose": "Three conditional design contrasts, not a full factorial or proof of optimality/equivalence",
+    "implementation_status": "Separate objective/selection authority still required; not launched by start_company.py",
+    "run_only_if": "The complete fixed five-seed block fits before the result freeze, based on runtime, not favorable scores."
+  },
+  "maximum_new_company_training": {
+    "formal": 35,
+    "tuning": 3,
+    "updates_excluding_one_8_update_qualification": 48640
+  },
+  "deferred_do_not_dispatch": [
+    "case30 additional four-method baseline replication",
+    "company case118 baseline duplication",
+    "company budget sweeps duplicating the existing CPU case118 queue",
+    "all-system surrogate-design expansion",
+    "five-round new-identity 130-trajectory continual matrix",
+    "six new pretrained models and 60 associated adaptation runs",
+    "label-assisted 45-formal/27-tuning matrix",
+    "50-trajectory proxy-weight sweep",
+    "new independent-C solver matrix merely replacing the existing fixed C"
+  ],
+  "readouts_no_additional_training": [
+    "Fixed overall target MSE and PBL, independent normal C",
+    "Paired seed effects and descriptive conditional uncertainty",
+    "Per-condition residual-versus-solution-error agreement and contrary cases",
+    "Actual adaptation/selection/inference costs with clear timing boundaries"
+  ],
+  "scientific_claim_limit": "Keep completed three-round retained-initialization evidence. No new-identity lifelong-learning or matched-cumulative-compute claim.",
+  "deadline_rule": {
+    "last_new_block_start": "2026-11-06",
+    "result_freeze": "2026-11-07",
+    "paper_and_author_review": "2026-11-08 through 2026-11-09",
+    "author_target_deadline": "2026-11-10; not independently verified venue policy",
+    "no_outcome_based_seed_addition_or_partial_favorable_summary": true,
+    "do_not_interrupt_or_reset_existing_jobs": true
+  }
+}
