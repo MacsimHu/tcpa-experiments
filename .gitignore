@@ -1,0 +1,15 @@
+__pycache__/
+results/
+data/
+artifacts/
+logs/
+.env
+.env.*
+*.pt
+*.pth
+*.pkl
+*.npz
+*.tar
+*.gz
+*.zip
+*.log
