@@ -1,0 +1,122 @@
+{
+  "company_training_observed": false,
+  "payloads": [
+    {
+      "bytes": 7048050,
+      "destination": "package",
+      "kind": "tar",
+      "parts": [
+        {
+          "bytes": 7048050,
+          "file_index": 0,
+          "name": "input00.o000000000000.n07048050.a00",
+          "offset": 0,
+          "sha256": "96b18d00bad2ac9fb6446477c42d19acf261d2a6a681ebbc1a24bde650bfa241",
+          "url": "https://github.com/MacsimHu/tcpa-experiments/releases/download/fixed-test-normal-C-inputs-v1/input00.o000000000000.n07048050.a00"
+        }
+      ],
+      "role": "report_only_case30_overall_five_family_test_and_independent_normal_C",
+      "sha256": "96b18d00bad2ac9fb6446477c42d19acf261d2a6a681ebbc1a24bde650bfa241"
+    },
+    {
+      "bytes": 173909602,
+      "destination": "package",
+      "kind": "tar",
+      "parts": [
+        {
+          "bytes": 16777216,
+          "file_index": 1,
+          "name": "input01.o000000000000.n16777216.a00",
+          "offset": 0,
+          "sha256": "40f3dd2e976b9b7edbade5b4073faa4d90830366349609e4698c37611233c68e",
+          "url": "https://github.com/MacsimHu/tcpa-experiments/releases/download/fixed-test-normal-C-inputs-v1/input01.o000000000000.n16777216.a00"
+        },
+        {
+          "bytes": 16777216,
+          "file_index": 1,
+          "name": "input01.o000016777216.n16777216.a00",
+          "offset": 16777216,
+          "sha256": "1131217dd7f259be9bc2132c140e794cef200fe4816d7c26548d5681f92a33ca",
+          "url": "https://github.com/MacsimHu/tcpa-experiments/releases/download/fixed-test-normal-C-inputs-v1/input01.o000016777216.n16777216.a00"
+        },
+        {
+          "bytes": 16777216,
+          "file_index": 1,
+          "name": "input01.o000033554432.n16777216.a00",
+          "offset": 33554432,
+          "sha256": "129b76d93a15dfec4c8632cebb10fdce2d125d5cb135001498783ad390f0da5b",
+          "url": "https://github.com/MacsimHu/tcpa-experiments/releases/download/fixed-test-normal-C-inputs-v1/input01.o000033554432.n16777216.a00"
+        },
+        {
+          "bytes": 16777216,
+          "file_index": 1,
+          "name": "input01.o000050331648.n16777216.a00",
+          "offset": 50331648,
+          "sha256": "6497e3321942993d7665386e940736766d493fa8d82188195cf77e1b4ba9ce3f",
+          "url": "https://github.com/MacsimHu/tcpa-experiments/releases/download/fixed-test-normal-C-inputs-v1/input01.o000050331648.n16777216.a00"
+        },
+        {
+          "bytes": 16777216,
+          "file_index": 1,
+          "name": "input01.o000067108864.n16777216.a00",
+          "offset": 67108864,
+          "sha256": "5aefa207b30cad22fd14936de2d385d2142070bf56672869cd8ca42d7c5535ad",
+          "url": "https://github.com/MacsimHu/tcpa-experiments/releases/download/fixed-test-normal-C-inputs-v1/input01.o000067108864.n16777216.a00"
+        },
+        {
+          "bytes": 16777216,
+          "file_index": 1,
+          "name": "input01.o000083886080.n16777216.a00",
+          "offset": 83886080,
+          "sha256": "215f3366290e1cea29f22e46572f8e45085956bdfb392d72386c075dffca9eb3",
+          "url": "https://github.com/MacsimHu/tcpa-experiments/releases/download/fixed-test-normal-C-inputs-v1/input01.o000083886080.n16777216.a00"
+        },
+        {
+          "bytes": 16777216,
+          "file_index": 1,
+          "name": "input01.o000100663296.n16777216.a00",
+          "offset": 100663296,
+          "sha256": "f6dad2e881792d7bf0b1bed6f12e2151f8c9a27c6f24ddeb853ed759dade5b87",
+          "url": "https://github.com/MacsimHu/tcpa-experiments/releases/download/fixed-test-normal-C-inputs-v1/input01.o000100663296.n16777216.a00"
+        },
+        {
+          "bytes": 16777216,
+          "file_index": 1,
+          "name": "input01.o000117440512.n16777216.a00",
+          "offset": 117440512,
+          "sha256": "38041e341252777b620049b524b379df1d941740aecd01d40638b7fbe3bb9622",
+          "url": "https://github.com/MacsimHu/tcpa-experiments/releases/download/fixed-test-normal-C-inputs-v1/input01.o000117440512.n16777216.a00"
+        },
+        {
+          "bytes": 16777216,
+          "file_index": 1,
+          "name": "input01.o000134217728.n16777216.a00",
+          "offset": 134217728,
+          "sha256": "3b87fa76d838621e283b09aae0300db6ba51abadf2de6cb0c30e0ddefce98b56",
+          "url": "https://github.com/MacsimHu/tcpa-experiments/releases/download/fixed-test-normal-C-inputs-v1/input01.o000134217728.n16777216.a00"
+        },
+        {
+          "bytes": 16777216,
+          "file_index": 1,
+          "name": "input01.o000150994944.n16777216.a00",
+          "offset": 150994944,
+          "sha256": "07e8e7f38ae601a1a1cc481dcd2b45b4fcb44435762350d0704ee5960db39894",
+          "url": "https://github.com/MacsimHu/tcpa-experiments/releases/download/fixed-test-normal-C-inputs-v1/input01.o000150994944.n16777216.a00"
+        },
+        {
+          "bytes": 6137442,
+          "file_index": 1,
+          "name": "input01.o000167772160.n06137442.a00",
+          "offset": 167772160,
+          "sha256": "6afe999dd72cef984fcd3ed54ef70aa40c0c78adb135d9745899bc48c63c3050",
+          "url": "https://github.com/MacsimHu/tcpa-experiments/releases/download/fixed-test-normal-C-inputs-v1/input01.o000167772160.n06137442.a00"
+        }
+      ],
+      "role": "report_only_case500_test_and_independent_normal_C",
+      "sha256": "bc86e66524f4732e00a8b0f0812ba8c35d7b3367db83327bf6047b1984e44b1d"
+    }
+  ],
+  "release": "https://github.com/MacsimHu/tcpa-experiments/releases/tag/fixed-test-normal-C-inputs-v1",
+  "schema_version": 1,
+  "utc_published": "2026-11-02T14:50:46.758419+00:00"
+}
