@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "payloads": [
+    {
+      "bytes": 49670670,
+      "destination": "package",
+      "kind": "tar",
+      "parts": [
+        {
+          "bytes": 16777216,
+          "file_index": 2,
+          "name": "input02.o000000000000.n16777216.a00",
+          "offset": 0,
+          "sha256": "67cae9271e20fd6103762df6cc5ae6c1361ab24a9e9dcf4c4dbe88bc13e938de",
+          "url": "https://github.com/MacsimHu/tcpa-experiments/releases/download/all-system-scientific-inputs-v1/input02.o000000000000.n16777216.a00"
+        },
+        {
+          "bytes": 16777216,
+          "file_index": 2,
+          "name": "input02.o000016777216.n16777216.a00",
+          "offset": 16777216,
+          "sha256": "09db4d49c7aeea1f62ca9d3c2bab246ed84a73a3b41f88e1a3ba50af5edf0de0",
+          "url": "https://github.com/MacsimHu/tcpa-experiments/releases/download/all-system-scientific-inputs-v1/input02.o000016777216.n16777216.a00"
+        },
+        {
+          "bytes": 16116238,
+          "file_index": 2,
+          "name": "input02.o000033554432.n16116238.a00",
+          "offset": 33554432,
+          "sha256": "bfa3883c7fd6f5b93ea6abca36fb70156e9fe3886cefd9856938560f066ae8a1",
+          "url": "https://github.com/MacsimHu/tcpa-experiments/releases/download/all-system-scientific-inputs-v1/input02.o000033554432.n16116238.a00"
+        }
+      ],
+      "role": "report_only_case118_test_and_normal_C_no_training_access",
+      "sha256": "94a0360606b0b298bff0dc74c5a4bfc23d53e159f7b3734e1cbddd23cb43afbe"
+    }
+  ]
+}

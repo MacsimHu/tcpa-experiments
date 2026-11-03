@@ -1,74 +1,71 @@
 {
-  "schema_version": 1,
-  "decision_date": "2026-11-02",
-  "reason": "Author narrowed the PESGM deadline scope to necessary, nonduplicate evidence.",
-  "supersedes": "The expansive 450-formal/36-tuning proposal is historical, not an execution order.",
+  "schema_version": 2,
+  "decision_date": "2026-11-03",
+  "reason": "Author transfers all missing necessary118 and trained-budget evidence to company A100; lab disk-blocked partials are historical only.",
   "automatic_extensions": false,
-  "existing_CPU_work_do_not_dispatch_on_company": {
-    "case118_matched_baselines": {
-      "formal": 20,
-      "tuning": 3,
-      "authority_sha256": "2e2ddd8b15a9ae27d8bd8023335732b3510a8901dac139714cda1dedad737ab3",
-      "last_checked_UTC": "2026-11-02T14:39:56+00:00",
-      "tuning_returns": 1,
-      "formal_returns": 0,
-      "second_tuning_last_logged_update": 640
-    },
-    "case118_trained_budgets": {
-      "additional_formal": 15,
-      "allowances": [0.0, 0.05, 0.2],
-      "reuse": "Same CPU study's five Full returns at allowance 0.10",
-      "status": "Existing frozen queue after its parent block and readout; not company work."
-    }
-  },
-  "company_dispatch_cases": ["case500"],
-  "company_first_block": {
-    "id": "A",
+  "company_dispatch_cases": ["case118"],
+  "company_existing_case500": {
     "formal": 20,
     "tuning": 3,
-    "actual_backend_qualification_updates": 8,
-    "methods": ["full", "physics_only", "physics_replay", "selected_anchor"],
-    "updates_each": 1280,
-    "qualification_and_training_not_yet_observed": true
+    "status": "User reports started; actual run identity and complete returns/readout not received.",
+    "action": "Do not interrupt, restart, duplicate or change its frozen source/authority. Accept its explicit completed directory with the external readout adapter."
   },
-  "company_second_block": {
-    "id": "C",
-    "case": "case500",
-    "additional_formal": 15,
-    "methods": ["linear_paired", "quadratic_fixed_source", "quadratic_paired_supervised_hinge"],
-    "reuse": "The first company's block's five matching Full returns",
-    "purpose": "Three conditional design contrasts, not a full factorial or proof of optimality/equivalence",
-    "implementation_status": "Separate objective/selection authority still required; not launched by start_company.py",
-    "run_only_if": "The complete fixed five-seed block fits before the result freeze, based on runtime, not favorable scores."
-  },
-  "maximum_new_company_training": {
-    "formal": 35,
+  "company_new_case118": {
+    "formal": 20,
     "tuning": 3,
-    "updates_excluding_one_8_update_qualification": 48640
+    "methods": ["full", "physics_only", "physics_replay", "selected_anchor"],
+    "formal_seeds": [1, 11, 42, 123, 2026],
+    "tuning_seed": 20261102,
+    "L2_coefficients": [0.001, 0.01, 0.1],
+    "updates_each": 1280,
+    "actual_backend_qualification_updates": 8,
+    "status": "Implemented handoff; not launched or company-qualified here.",
+    "serialize_after": "Completed existing company500, with no other selected-GPU owners."
+  },
+  "company_new_case118_budgets": {
+    "additional_formal": 15,
+    "allowances": [0.0, 0.05, 0.2],
+    "reuse": "Exactly the matching company118 five Full returns at0.10; no new Full.",
+    "requires": "Complete matching company118 baseline and fixed readout; same N0/backend/profile/source/B/sampling/calibration/test/C.",
+    "status": "Implemented handoff; not launched.",
+    "state_bounds": "(1+delta)^2",
+    "power_balance_bound": "1+delta",
+    "supervised_bound": "2*N0_cmse+1e-4 unchanged",
+    "change_training_penalty_and_selection_gate": true,
+    "posthoc_curve_is_not_trained_evidence": true
+  },
+  "essential_total_including_existing500": {"formal": 55, "tuning": 6},
+  "new_transfer_not_existing500_rerun": {"formal": 35, "tuning": 3, "trajectories": 38},
+  "historical_lab118_do_not_dispatch": {
+    "formal_returns_last_known": "3/20, incomplete",
+    "tuning_returns_last_known": "3/3",
+    "continuation_v2_actual_exit_code": 1,
+    "free_bytes_at_disk_stop": 6364659712,
+    "budget_training_started": false,
+    "action": "Preserve failures/partials. Local no longer dispatches118 or budget. Never combine with A100 results or substitute old CPU Full."
   },
   "deferred_do_not_dispatch": [
-    "case30 additional four-method baseline replication",
-    "company case118 baseline duplication",
-    "company budget sweeps duplicating the existing CPU case118 queue",
-    "all-system surrogate-design expansion",
-    "five-round new-identity 130-trajectory continual matrix",
-    "six new pretrained models and 60 associated adaptation runs",
-    "label-assisted 45-formal/27-tuning matrix",
-    "50-trajectory proxy-weight sweep",
-    "new independent-C solver matrix merely replacing the existing fixed C"
+    "Old optional15 case500 proxy-design trajectories: unimplemented/deferred, NOT a deadline prerequisite",
+    "additional case30",
+    "new pretraining",
+    "new-identity continual matrices",
+    "label-assisted/oracle grids",
+    "proxy-weight sweeps"
   ],
   "readouts_no_additional_training": [
-    "Fixed overall target MSE and PBL, independent normal C",
-    "Paired seed effects and descriptive conditional uncertainty",
-    "Per-condition residual-versus-solution-error agreement and contrary cases",
-    "Actual adaptation/selection/inference costs with clear timing boundaries"
+    "All20 actual returns plus fresh matching-backend N0, fixed identity-weighted raw MSE/PBL and four report-only C risks",
+    "Allfive-seed sampleSD, unchangedN0 counts and complete costs, including negative/fallback returns",
+    "Comparator-minus-Full paired raw MSE/PBL differences and approximate nonsimultaneous t4 95% intervals",
+    "Percondition identity/error/residual records for agreement/contrary cases",
+    "Trained118 budget observations plus exactly matching parent Full, no CPU substitution",
+    "Small manual JSON/CSV/evidence archive; native optimizer/RNG/model states retained on data volume"
   ],
-  "scientific_claim_limit": "Keep completed three-round retained-initialization evidence. No new-identity lifelong-learning or matched-cumulative-compute claim.",
+  "timing_scope": "Combined training includes in-training gates; selection includes normal gate, development and interpolation. Pure gate not separately instrumented; forward latency not measured. No AC solver speedup.",
+  "rPBL": "Not implemented or imputed by this readout",
   "deadline_rule": {
     "last_new_block_start": "2026-11-06",
     "result_freeze": "2026-11-07",
-    "paper_and_author_review": "2026-11-08 through 2026-11-09",
-    "author_target_deadline": "2026-11-10; not independently verified venue policy",
+    "author_target_deadline": "2026-11-10; author request, not verified venue policy",
     "no_outcome_based_seed_addition_or_partial_favorable_summary": true,
     "do_not_interrupt_or_reset_existing_jobs": true
   }

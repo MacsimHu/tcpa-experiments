@@ -39,7 +39,8 @@ def main():
                         help="A writable data-volume directory, never the almost-full system disk")
     parser.add_argument("--manifest", default="scientific_inputs.json",
                         choices=("scientific_inputs.json", "additional_inputs.json",
-                                 "report_inputs.json"))
+                                 "report_inputs.json", "company_reports_case118.json",
+                                 "company_reports_case500.json"))
     args = parser.parse_args()
     root = args.work_dir.resolve()
     root.mkdir(exist_ok=True)

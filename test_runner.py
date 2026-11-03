@@ -16,26 +16,31 @@ import start_company
 
 
 class RunnerTests(unittest.TestCase):
-    def test_deadline_queue_excludes_duplicate_studies_and_gates_optional_block(self):
+    def test_deadline_queue_transfers_missing118_but_never_redispatches_existing500(self):
         jobs = make_jobs.build_jobs()
-        self.assertEqual(len(jobs), 39)
-        self.assertEqual({row["grid"] for row in jobs}, {"case500"})
-        first_block = {row["job_id"] for row in jobs if row["block"] == "A"}
-        self.assertEqual(len(first_block), 23)
-        self.assertEqual(sum(row["updates"] for row in jobs), 48648)
+        self.assertEqual(len(jobs), 63)
+        self.assertEqual({row["grid"] for row in jobs}, {"case118", "case500"})
+        first_block = {row["job_id"] for row in jobs if row["block"] == "new118"}
+        self.assertEqual(len(first_block), 24)
+        self.assertEqual(sum(row["phase"] == "formal" for row in jobs), 55)
+        self.assertEqual(sum(row["phase"] == "tune" for row in jobs), 6)
+        self.assertEqual(sum(row["phase"] in ("formal", "tune") and row["action"] == "new"
+                             for row in jobs), 38)
         for row in jobs:
             self.assertFalse(row["execution_ready"])
-            if row["block"] == "C":
+            if row["block"] == "existing500":
+                self.assertEqual(row["action"], "reuse_existing_no_dispatch")
+            if row["block"] == "budget118":
                 self.assertEqual(set(row["depends_on"]), first_block)
-                self.assertFalse(row["implementation_available"])
+                self.assertTrue(row["implementation_available"])
 
     def test_duplicate_company_cases_are_rejected_before_runtime_or_disk_work(self):
-        for case in ("case118", "case30"):
+        for case in ("case500", "case30"):
             with self.subTest(case=case):
                 with patch.object(sys, "argv", ["start_company.py", "--case", case,
                                                "--work-dir", "unused", "--run-id", "unused"]):
                     with patch("start_company.subprocess.check_output") as launch:
-                        with self.assertRaisesRegex(ValueError, "nonduplicate company scope"):
+                        with self.assertRaisesRegex(ValueError, "nonduplicate company scope|do not rerun"):
                             start_company.main()
                         launch.assert_not_called()
 

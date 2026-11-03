@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "scientific_jobs_launched": 0,
+  "scientific_reference_source_sha256": {
+    "readout_protocol_v3_recovered/execute_readout.py": "dd4cc3bc38eea9a9a77a57f141659871a58dde710e15edca81b04ed1f05c8121",
+    "readout_protocol_v3_recovered/analysis_reference.py": "c05d22ff2ac123f8e653e3e6fe2da9367f020bc6c21c88f9bc8bd2d864892d36",
+    "readout_protocol_v3_recovered/analyze_readout.py": "dc5ea0ebf57cd6ed434d119f8f5591cc0281776c04c98b5ceecf957a707d3063",
+    "budget_sensitivity_v2/study_methods.py": "bf7dee789d75a4d1379a77448bcecd4e979835d769f654f05eeb1879baff4fd4",
+    "budget_sensitivity_v2/budget_supervisor.py": "7c8881f72a0c9e31664c2e4bc3b14d3b02577bb3fdfe1a5f0c60862a1eb1aa2b",
+    "budget_sensitivity_v2/runtime_support.py": "5ea6574d97fa4c5f119c985e5e4080b1bd399693cebf3028ed9b55db87caf52d"
+  },
+  "adaptations": [
+    "V3 CPU-only deployment/completion authority replaced by explicit completed company A100 run with the same metrics/cohorts and five-seed statistics",
+    "No rPBL output or imputation; no forward/AC solver speed claim",
+    "Budget uses already-published runtime.configure and select_cell specification hooks; no new numerical training kernel",
+    "All native states retained; no local archive/delete/signal/automatic recovery adapters transferred"
+  ],
+  "released_case118_runtime_sha256": {
+    "runtime/study_methods.py": "bf7dee789d75a4d1379a77448bcecd4e979835d769f654f05eeb1879baff4fd4",
+    "runtime/runtime_support.py": "5ea6574d97fa4c5f119c985e5e4080b1bd399693cebf3028ed9b55db87caf52d",
+    "runtime/select_cell.py": "9a01db0f0cd9d60b3a5fa51761628f820e94a3acef4e75252ae712813572fac5",
+    "runtime/worker.py": "f44bb6416296cd9ea7d023484e17e6af0c34e2ac96391166f6f79a0d76611d70"
+  }
+}

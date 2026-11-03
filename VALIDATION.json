@@ -1,0 +1,47 @@
+{
+  "utc": "2026-11-03T07:39:02.526604+00:00",
+  "tests": {
+    "command": "python -B -m unittest test_runner test_company_closure",
+    "passed": 26,
+    "exit_code": 0,
+    "scientific_NN_or_PF_calls": 0,
+    "scratch": "project-local .test_scratch"
+  },
+  "all_public_python_ASTs_parse": true,
+  "exact_published_report_subset_manifests": true,
+  "essential_formal": 55,
+  "essential_tunes": 6,
+  "new_transferred_trajectories": 38,
+  "old_optional15_proxy": "deferred_not_prerequisite",
+  "local_public_equivalent_IO_checks": {
+    "case118_runtime_bindings": 28,
+    "case500_runtime_bindings": 28,
+    "workspace_source_bindings_checked": true,
+    "case118_preparedB_receipt_matches_published_plan": true,
+    "case118_report_target_normalC_counts": [
+      551,
+      1024
+    ],
+    "case500_report_target_normalC_counts": [
+      388,
+      1019
+    ],
+    "both_report_archive_SHA256_and_complete_member_indexes_checked": true,
+    "both_target_cohorts_have_zero_identity_overlap_with_all_published_learning": true
+  },
+  "actual_company_CUDA_numerical_execution_qualified": false,
+  "company_run_identity_received": false,
+  "scientific_jobs_or_server_commands_or_canaries_or_cleanup_performed": false,
+  "code_sha256": {
+    "company_budget_supervisor.py": "07f0766829216662432d66d8921eb74c5fd41348b50c8e8ca272946ef4e11180",
+    "company_protocol.py": "093862b892be7b4cd07a2c8dd81a0e888862ca15d150224538064fdba319ceb3",
+    "company_readout.py": "533531554124a3cb8e0827fbf05d17b63acaec8bb48a1d60b6e1fb5010e1952c",
+    "company_supervisor.py": "442ae1a5cb641f7b8a6c9ad0c4d82e17ae654f9c0996f568e684c2d5cf810db2",
+    "export_results.py": "94a17d443957cef5d99daba35f1745480f7fec40271f5d40102ce470d1a8df7b",
+    "fetch_inputs.py": "0d59c1332f4c1722cabf1e889373a7e5fa214c6d8c745f5cea4960b6b88c8a10",
+    "make_jobs.py": "36cb382448a9f90f3d766af119160b9f424a99cbd79203f3088c167c9abce367",
+    "start_budget.py": "aa673d37bff2ddc1b51a5e178edc37cef0035b453117b41fa850b5895f7fa26d",
+    "start_company.py": "5c9615b418b35b29798256127212f48e9854dcb3d7b37bfc49d2c7cdbb1cf28a"
+  },
+  "code_hash_basis": "Public Git UTF-8 LF blobs; Windows working-tree CRLF normalized, immutable release archive bytes unchanged"
+}

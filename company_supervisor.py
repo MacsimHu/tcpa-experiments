@@ -52,7 +52,8 @@ def run(plan):
         "case": case, "target_count": plan["cases"][case]["target_conditions"],
         "normal_C_count": 1019 if case == "case500" else 1024,
         "target_or_C_readout_started": False,
-        "response_data_and_readout_adapter_pending": True,
+        "readout_entry": "company_readout.py --run-dir EXPLICIT_COMPLETED_RUN --work-dir DATA --output-dir NEW_READOUT",
+        "readout_is_explicit_and_never_automatic": True,
     })
 
 

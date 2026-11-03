@@ -13,3 +13,4 @@ logs/
 *.gz
 *.zip
 *.log
+.test_scratch/
